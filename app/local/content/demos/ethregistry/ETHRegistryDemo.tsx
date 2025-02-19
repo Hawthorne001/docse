@@ -6,6 +6,7 @@ import { useAccount, useChainId } from 'wagmi';
 
 import { ClientOnly } from '@/ClientOnly';
 
+import { DemoSection } from './DemoSection';
 import { DurationField } from './inputs/DurationField';
 import { GenerateSecret } from './inputs/GenerateSecret';
 import { LabelField } from './inputs/LabelField';
@@ -29,7 +30,7 @@ const Demo = () => {
         '0x225f137127d9067788314bc7fcc1f36746a3c3B5'
     );
     const [resolver, setResolver] = useState(
-        '0x225f137127d9067788314bc7fcc1f36746a3c3B5'
+        '0x231b0Ee14048e9dCcD1d247744d114a4EB5E8E63'
     );
     const [duration, setDuration] = useState(60 * 60 * 24 * 365);
     const [secret, setSecret] = useState(
@@ -48,38 +49,53 @@ const Demo = () => {
         <div className="">
             <div className="space-y-4 p-4">
                 {!isConnected && <div>Please Connect Wallet</div>}
-                <LabelField label={label} setLabel={setLabel} />
-                <AvailabilityCheck name={label} setAvailable={setAvailable} />
-                <DurationField duration={duration} setDuration={setDuration} />
-                <GenerateSecret secret={secret} setSecret={setSecret} />
-                <OwnerField owner={owner} setOwner={setOwner} />
-                <ResolverField resolver={resolver} setResolver={setResolver} />
-                <CommitmentCheck
-                    name={label}
-                    duration={duration}
-                    owner={owner}
-                    secret={secret}
-                    resolver={resolver}
-                    setCommithash={setCommithash}
-                />
-                <MakeCommit commithash={commithash} />
+                <DemoSection name="Check Availability">
+                    <LabelField label={label} setLabel={setLabel} />
+                    <AvailabilityCheck
+                        name={label}
+                        setAvailable={setAvailable}
+                    />
+                </DemoSection>
+                <DemoSection name="Commit">
+                    <DurationField
+                        duration={duration}
+                        setDuration={setDuration}
+                    />
+                    <GenerateSecret secret={secret} setSecret={setSecret} />
+                    <OwnerField owner={owner} setOwner={setOwner} />
+                    <ResolverField
+                        resolver={resolver}
+                        setResolver={setResolver}
+                    />
+                    <CommitmentCheck
+                        name={label}
+                        duration={duration}
+                        owner={owner}
+                        secret={secret}
+                        resolver={resolver}
+                        setCommithash={setCommithash}
+                    />
+                    <MakeCommit commithash={commithash} />
+                </DemoSection>
                 <div className="card1 flex items-center gap-3 p-4">
                     <FiClock className="text-lg" />
                     Wait 60 seconds.
                 </div>
-                <RentPriceCheck
-                    name={label}
-                    duration={duration}
-                    setRentPrice={setRentPrice}
-                />
-                <RegisterName
-                    name={label}
-                    duration={duration}
-                    owner={owner}
-                    secret={secret}
-                    resolver={resolver}
-                    rentPrice={rentPrice}
-                />
+                <DemoSection name="Register">
+                    <RentPriceCheck
+                        name={label}
+                        duration={duration}
+                        setRentPrice={setRentPrice}
+                    />
+                    <RegisterName
+                        name={label}
+                        duration={duration}
+                        owner={owner}
+                        secret={secret}
+                        resolver={resolver}
+                        rentPrice={rentPrice}
+                    />
+                </DemoSection>
             </div>
         </div>
     );

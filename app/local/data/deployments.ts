@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { goerli, holesky, mainnet, sepolia } from 'viem/chains';
+import { holesky, mainnet, sepolia } from 'viem/chains';
 
 import { DeploymentData } from '#/content/extras/deployments/deployment';
 
@@ -52,48 +52,10 @@ export const DEPLOYMENTS: Deployment[] = [
                 path: 'PublicResolver',
                 srcPath: 'contracts/resolvers/PublicResolver.sol',
             },
-        ],
-    },
-    {
-        name: 'Goerli',
-        slug: 'goerli',
-        id: goerli.id,
-        contracts: [
             {
-                name: 'Registry',
-                path: 'ENSRegistry',
-                srcPath: 'contracts/registry/ENSRegistry.sol',
-            },
-            {
-                name: 'Base Registrar',
-                path: 'BaseRegistrarImplementation',
-                srcPath:
-                    'contracts/ethregistrar/BaseRegistrarImplementation.sol',
-            },
-            {
-                name: 'ETH Registrar Controller',
-                path: 'ETHRegistrarController',
-                srcPath: 'contracts/ethregistrar/ETHRegistrarController.sol',
-            },
-            {
-                name: 'DNS Registrar',
-                path: 'DNSRegistrar',
-                srcPath: 'contracts/dnsregistrar/DNSRegistrar.sol',
-            },
-            {
-                name: 'Reverse Registrar',
-                path: 'ReverseRegistrar',
-                srcPath: 'contracts/reverseRegistrar/ReverseRegistrar.sol',
-            },
-            {
-                name: 'Name Wrapper',
-                path: 'NameWrapper',
-                srcPath: 'contracts/wrapper/NameWrapper.sol',
-            },
-            {
-                name: 'Public Resolver',
-                path: 'PublicResolver',
-                srcPath: 'contracts/resolvers/PublicResolver.sol',
+                name: 'Universal Resolver',
+                path: 'UniversalResolver',
+                srcPath: 'contracts/utils/UniversalResolver.sol',
             },
         ],
     },
@@ -138,6 +100,11 @@ export const DEPLOYMENTS: Deployment[] = [
                 path: 'PublicResolver',
                 srcPath: 'contracts/resolvers/PublicResolver.sol',
             },
+            {
+                name: 'Universal Resolver',
+                path: 'UniversalResolver',
+                srcPath: 'contracts/utils/UniversalResolver.sol',
+            },
         ],
     },
     {
@@ -180,6 +147,11 @@ export const DEPLOYMENTS: Deployment[] = [
                 name: 'Public Resolver',
                 path: 'PublicResolver',
                 srcPath: 'contracts/resolvers/PublicResolver.sol',
+            },
+            {
+                name: 'Universal Resolver',
+                path: 'UniversalResolver',
+                srcPath: 'contracts/utils/UniversalResolver.sol',
             },
         ],
     },
